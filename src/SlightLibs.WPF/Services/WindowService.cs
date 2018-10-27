@@ -15,7 +15,10 @@ namespace SlightLibs.WPF.Services
                 DataContext = new TViewModel()
             };
 
-            window.Show();
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                window.Show();
+            });
         }
 
         public void Destroy<TViewModel>() where TViewModel : ViewModelBase
