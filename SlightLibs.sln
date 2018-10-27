@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlightLibs.WPF", "SlightLibs.WPF\SlightLibs.WPF.csproj", "{1360F612-1C76-426C-9F97-F2D31A1904EE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlightLibs", "SlightLibs\SlightLibs.csproj", "{F71FFD0E-40BC-48FF-AB43-8377D4D29AB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlightLibs.WPF.Tests", "tests\SlightLibs.WPF.Tests\SlightLibs.WPF.Tests.csproj", "{0D514347-6E1B-4191-BAD2-9472400ADC93}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1360F612-1C76-426C-9F97-F2D31A1904EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1360F612-1C76-426C-9F97-F2D31A1904EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1360F612-1C76-426C-9F97-F2D31A1904EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1360F612-1C76-426C-9F97-F2D31A1904EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F71FFD0E-40BC-48FF-AB43-8377D4D29AB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F71FFD0E-40BC-48FF-AB43-8377D4D29AB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F71FFD0E-40BC-48FF-AB43-8377D4D29AB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F71FFD0E-40BC-48FF-AB43-8377D4D29AB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D514347-6E1B-4191-BAD2-9472400ADC93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D514347-6E1B-4191-BAD2-9472400ADC93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D514347-6E1B-4191-BAD2-9472400ADC93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D514347-6E1B-4191-BAD2-9472400ADC93}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
