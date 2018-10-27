@@ -60,5 +60,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SlightLibs\SlightLibs.csproj">
+      <Project>{f71ffd0e-40bc-48ff-ab43-8377d4d29ab8}</Project>
+      <Name>SlightLibs</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

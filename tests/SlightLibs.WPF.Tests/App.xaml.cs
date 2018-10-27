@@ -1,6 +1,6 @@
 ﻿using SlightLibs.Service;
-using SlightLibs.WPF.Services;
 using SlightLibs.WPF.Tests.ViewModels;
+using SlightLibs.WPF.Window;
 using System.Windows;
 
 namespace SlightLibs.WPF.Tests
@@ -11,9 +11,9 @@ namespace SlightLibs.WPF.Tests
         {
             base.OnStartup(e);
 
-            var windowService = ServiceProvider.Instance.AddService(new WindowService());
-
-            windowService.Create<MainViewModel>();
+            ServiceProvider.Instance.InjectServices();
+            ServiceProvider.Instance.GetService<IWindowService>()
+                .Create<MainViewModel>();
         }
     }
 }

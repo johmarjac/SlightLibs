@@ -1,9 +1,11 @@
-﻿using SlightLibs.WPF.ViewModel;
+﻿using SlightLibs.Service;
+using SlightLibs.WPF.ViewModel;
 using SlightLibs.WPF.Window;
 using System.Windows;
 
 namespace SlightLibs.WPF.Services
 {
+    [InjectableService]
     public class WindowService : IWindowService
     {
         public void Create<TViewModel>() where TViewModel : ViewModelBase, new()

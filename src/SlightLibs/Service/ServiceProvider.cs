@@ -1,25 +1,32 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using SlightLibs.Structural;
+﻿using SlightLibs.Structural;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace SlightLibs.Service
 {
     public sealed class ServiceProvider : Singleton<ServiceProvider>
     {
-        private readonly IServiceCollection _services;
+        private readonly List<object> _services;
 
         public ServiceProvider()
         {
-            _services = new ServiceCollection();
+            _services = new List<object>();
         }
 
-        public TService AddService<TService>(TService service)
+        public void InjectServices()
         {
-            var serviceDescriptor = new ServiceDescriptor(typeof(TService), service);
+            var classes = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(x => x.GetTypes().Where(w => w.GetTypeInfo().GetCustomAttribute(typeof(InjectableServiceAttribute)) != null));
 
-            _services.Add(serviceDescriptor);
+            foreach (var serviceClass in classes)
+                AddService(Activator.CreateInstance(serviceClass));
+        }
 
-            return service;
+        public void AddService<TService>(TService service)
+        {
+            _services.Add(service);
         }
 
         public TService GetService<TService>()
