@@ -91,11 +91,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SlightLibs.WPF\SlightLibs.WPF.csproj">
+    <ProjectReference Include="..\..\src\SlightLibs.WPF\SlightLibs.WPF.csproj">
       <Project>{1360f612-1c76-426c-9f97-f2d31a1904ee}</Project>
       <Name>SlightLibs.WPF</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\SlightLibs\SlightLibs.csproj">
+    <ProjectReference Include="..\..\src\SlightLibs\SlightLibs.csproj">
       <Project>{f71ffd0e-40bc-48ff-ab43-8377d4d29ab8}</Project>
       <Name>SlightLibs</Name>
     </ProjectReference>

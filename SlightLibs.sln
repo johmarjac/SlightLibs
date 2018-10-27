@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlightLibs.WPF", "SlightLibs.WPF\SlightLibs.WPF.csproj", "{1360F612-1C76-426C-9F97-F2D31A1904EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlightLibs.WPF", "src\SlightLibs.WPF\SlightLibs.WPF.csproj", "{1360F612-1C76-426C-9F97-F2D31A1904EE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlightLibs", "SlightLibs\SlightLibs.csproj", "{F71FFD0E-40BC-48FF-AB43-8377D4D29AB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlightLibs", "src\SlightLibs\SlightLibs.csproj", "{F71FFD0E-40BC-48FF-AB43-8377D4D29AB8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlightLibs.WPF.Tests", "tests\SlightLibs.WPF.Tests\SlightLibs.WPF.Tests.csproj", "{0D514347-6E1B-4191-BAD2-9472400ADC93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1AADD023-227C-4DCE-A460-B5C74E372EC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DB445C77-88FB-4302-8B9E-E88079620B14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +34,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1360F612-1C76-426C-9F97-F2D31A1904EE} = {1AADD023-227C-4DCE-A460-B5C74E372EC0}
+		{F71FFD0E-40BC-48FF-AB43-8377D4D29AB8} = {1AADD023-227C-4DCE-A460-B5C74E372EC0}
+		{0D514347-6E1B-4191-BAD2-9472400ADC93} = {DB445C77-88FB-4302-8B9E-E88079620B14}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4BF99D68-C3C4-4D15-8388-27E01C6500F7}
