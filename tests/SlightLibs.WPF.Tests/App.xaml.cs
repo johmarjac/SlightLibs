@@ -12,8 +12,9 @@ namespace SlightLibs.WPF.Tests
             base.OnStartup(e);
 
             ServiceProvider.Instance.InjectServices();
+
             ServiceProvider.Instance.GetService<IWindowService>()
-                .Create<MainViewModel>();
+                ?.Create<MainViewModel>();
         }
     }
 }
