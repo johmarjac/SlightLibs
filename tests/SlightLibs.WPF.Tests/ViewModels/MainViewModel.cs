@@ -16,7 +16,7 @@ namespace SlightLibs.WPF.Tests.ViewModels
             {
                 ServiceProvider.Instance
                     .GetService<IWindowService>()
-                    .Create<SecondViewModel>();
+                    .Create<SecondViewModel>("SecondView", this, true);
             });
         }
     }

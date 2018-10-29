@@ -8,14 +8,15 @@ namespace SlightLibs.WPF.Services
     [InjectableService]
     public class WindowService : IWindowService
     {
-        public void Create<TViewModel>(string title = "DefaultWindow", bool isDialog = false) where TViewModel : ViewModelBase, new()
+        public void Create<TViewModel>(string title = "DefaultWindow", ViewModelBase ownerViewModel = null, bool isDialog = false) where TViewModel : ViewModelBase, new()
         {
             var window = new DefaultWindow
             {
                 Title = title,
                 DataContext = new TViewModel(),
                 SizeToContent = SizeToContent.Manual,
-                WindowStartupLocation = WindowStartupLocation.CenterScreen
+                Owner = GetViewByViewModel(ownerViewModel),
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
             };
 
             Application.Current.Dispatcher.Invoke(() =>
@@ -25,6 +26,17 @@ namespace SlightLibs.WPF.Services
                 else
                     window.ShowDialog();
             });
+        }
+
+        private System.Windows.Window GetViewByViewModel(ViewModelBase viewModel)
+        {
+            foreach (System.Windows.Window window in Application.Current.Windows)
+            {
+                if (window.DataContext == viewModel)
+                    return window;
+            }
+
+            return null;
         }
 
         public void Destroy<TViewModel>() where TViewModel : ViewModelBase
