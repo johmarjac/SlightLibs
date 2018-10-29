@@ -1,6 +1,7 @@
 ﻿using SlightLibs.Service;
 using SlightLibs.WPF.ViewModel;
 using SlightLibs.WPF.Window;
+using System.ComponentModel;
 using System.Windows;
 
 namespace SlightLibs.WPF.Services
@@ -8,7 +9,7 @@ namespace SlightLibs.WPF.Services
     [InjectableService]
     public class WindowService : IWindowService
     {
-        public void Create<TViewModel>(string title = "DefaultWindow", ViewModelBase ownerViewModel = null, bool isDialog = false) where TViewModel : ViewModelBase, new()
+        public void Create<TViewModel>(string title = "DefaultWindow", ViewModelBase ownerViewModel = null, bool isDialog = false, RoutedEventHandler windowLoadedHandler = null, CancelEventHandler windowClosingHandler = null) where TViewModel : ViewModelBase, new()
         {
             var window = new DefaultWindow
             {
@@ -18,6 +19,9 @@ namespace SlightLibs.WPF.Services
                 Owner = GetViewByViewModel(ownerViewModel),
                 WindowStartupLocation = WindowStartupLocation.CenterOwner,
             };
+
+            window.Loaded += windowLoadedHandler;
+            window.Closing += windowClosingHandler;
 
             Application.Current.Dispatcher.Invoke(() =>
             {
