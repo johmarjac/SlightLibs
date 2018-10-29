@@ -9,19 +9,24 @@ namespace SlightLibs.WPF.Services
     [InjectableService]
     public class WindowService : IWindowService
     {
-        public void Create<TViewModel>(string title = "DefaultWindow", ViewModelBase ownerViewModel = null, bool isDialog = false, RoutedEventHandler windowLoadedHandler = null, CancelEventHandler windowClosingHandler = null) where TViewModel : ViewModelBase, new()
+        public void Create<TViewModel>(string title = "DefaultWindow", ViewModelBase ownerViewModel = null, bool isDialog = false) where TViewModel : ViewModelBase, new()
         {
+            var viewModel = new TViewModel();
+
             var window = new DefaultWindow
             {
                 Title = title,
-                DataContext = new TViewModel(),
+                DataContext = viewModel,
                 SizeToContent = SizeToContent.WidthAndHeight,
                 Owner = GetViewByViewModel(ownerViewModel),
                 WindowStartupLocation = WindowStartupLocation.CenterOwner,
             };
 
-            window.Loaded += windowLoadedHandler;
-            window.Closing += windowClosingHandler;
+            if (ownerViewModel == null)
+                window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            window.Loaded += viewModel.OnLoaded;
+            window.Closing += viewModel.OnClosing;
 
             Application.Current.Dispatcher.Invoke(() =>
             {

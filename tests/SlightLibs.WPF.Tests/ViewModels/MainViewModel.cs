@@ -18,18 +18,20 @@ namespace SlightLibs.WPF.Tests.ViewModels
             {
                 ServiceProvider.Instance
                     .GetService<IWindowService>()
-                    .Create<SecondViewModel>("SecondView", this, true, Window_Loaded, Window_Closing);
+                    .Create<SecondViewModel>("SecondView", this, true);
             });
         }
 
-        private void Window_Closing(object sender, CancelEventArgs e)
+        public override void OnLoaded(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Closing");
+            base.OnLoaded(sender, e);
+            MessageBox.Show("hi");
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        public override void OnClosing(object sender, CancelEventArgs e)
         {
-            MessageBox.Show("Loaded");
+            base.OnClosing(sender, e);
+            MessageBox.Show("bye");
         }
     }
 }

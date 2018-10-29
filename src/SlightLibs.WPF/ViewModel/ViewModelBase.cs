@@ -1,10 +1,12 @@
-﻿using System;
+﻿using SlightLibs.WPF.Services;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 
 namespace SlightLibs.WPF.ViewModel
 {
-    public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
+    public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable, IWindowEvents
     {        
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -12,6 +14,10 @@ namespace SlightLibs.WPF.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        
+        public virtual void OnLoaded(object sender, RoutedEventArgs e) { }
+
+        public virtual void OnClosing(object sender, CancelEventArgs e) { }
 
         protected virtual void Dispose(bool disposing)
         {

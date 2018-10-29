@@ -6,6 +6,6 @@
              xmlns:local="clr-namespace:SlightLibs.WPF.Tests.Views"
              mc:Ignorable="d">
     <Grid>
-        <Button Content="hallo" Command="{Binding OpenWindow}"></Button>
+        <Button Content="hallo" Command="{Binding OpenWindow}" Margin="50"></Button>
     </Grid>
 </UserControl>
