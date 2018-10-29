@@ -14,7 +14,7 @@ namespace SlightLibs.WPF.Services
             {
                 Title = title,
                 DataContext = new TViewModel(),
-                SizeToContent = SizeToContent.Manual,
+                SizeToContent = SizeToContent.WidthAndHeight,
                 Owner = GetViewByViewModel(ownerViewModel),
                 WindowStartupLocation = WindowStartupLocation.CenterOwner,
             };
