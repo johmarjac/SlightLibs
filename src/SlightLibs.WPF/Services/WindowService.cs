@@ -8,16 +8,22 @@ namespace SlightLibs.WPF.Services
     [InjectableService]
     public class WindowService : IWindowService
     {
-        public void Create<TViewModel>() where TViewModel : ViewModelBase, new()
+        public void Create<TViewModel>(string title = "DefaultWindow", bool isDialog = false) where TViewModel : ViewModelBase, new()
         {
             var window = new DefaultWindow
             {
-                DataContext = new TViewModel()
+                Title = title,
+                DataContext = new TViewModel(),
+                SizeToContent = SizeToContent.Manual,
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
             };
 
             Application.Current.Dispatcher.Invoke(() =>
             {
-                window.Show();
+                if (!isDialog)
+                    window.Show();
+                else
+                    window.ShowDialog();
             });
         }
 
