@@ -53,7 +53,7 @@
     <Compile Include="Window\DefaultWindow.xaml.cs">
       <DependentUpon>DefaultWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Window\IWindowService.cs" />
+    <Compile Include="Services\IWindowService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Window\DefaultWindow.xaml">

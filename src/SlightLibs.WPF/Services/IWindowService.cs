@@ -1,6 +1,6 @@
 ﻿using SlightLibs.WPF.ViewModel;
 
-namespace SlightLibs.WPF.Window
+namespace SlightLibs.WPF.Services
 {
     public interface IWindowService
     {
