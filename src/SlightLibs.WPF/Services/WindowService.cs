@@ -1,7 +1,6 @@
 ﻿using SlightLibs.Service;
 using SlightLibs.WPF.ViewModel;
 using SlightLibs.WPF.Window;
-using System.ComponentModel;
 using System.Windows;
 
 namespace SlightLibs.WPF.Services
@@ -53,7 +52,11 @@ namespace SlightLibs.WPF.Services
             foreach(System.Windows.Window window in Application.Current.Windows)
             {
                 if (window.DataContext.GetType() == typeof(TViewModel))
+                {
+                    window.Loaded -= ((ViewModelBase)window.DataContext).OnLoaded;
+                    window.Closing -= ((ViewModelBase)window.DataContext).OnClosing;
                     window.Close();
+                }
             }
         }
     }
