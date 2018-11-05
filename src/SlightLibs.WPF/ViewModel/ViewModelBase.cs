@@ -10,6 +10,22 @@ namespace SlightLibs.WPF.ViewModel
     {        
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private string title { get; set; }
+        public string Title
+        {
+            get { return title; }
+            set
+            {
+                title = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public ViewModelBase(string title = "DefaultTitle")
+        {
+            Title = title;
+        }
+
         public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

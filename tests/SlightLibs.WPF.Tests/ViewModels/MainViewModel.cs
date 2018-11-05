@@ -2,8 +2,6 @@
 using SlightLibs.WPF.Command;
 using SlightLibs.WPF.Services;
 using SlightLibs.WPF.ViewModel;
-using System.ComponentModel;
-using System.Windows;
 using System.Windows.Input;
 
 namespace SlightLibs.WPF.Tests.ViewModels
@@ -12,26 +10,14 @@ namespace SlightLibs.WPF.Tests.ViewModels
     {
         public ICommand OpenWindow { get; }
 
-        public MainViewModel()
+        public MainViewModel() : base("Main View Title")
         {
             OpenWindow = new RelayCommand(() =>
             {
                 ServiceProvider.Instance
                     .GetService<IWindowService>()
-                    .Create<SecondViewModel>("SecondView", this, true);
+                    .Create<SecondViewModel>(this, true);
             });
-        }
-
-        public override void OnLoaded(object sender, RoutedEventArgs e)
-        {
-            base.OnLoaded(sender, e);
-            MessageBox.Show("hi");
-        }
-
-        public override void OnClosing(object sender, CancelEventArgs e)
-        {
-            base.OnClosing(sender, e);
-            MessageBox.Show("bye");
         }
     }
 }
