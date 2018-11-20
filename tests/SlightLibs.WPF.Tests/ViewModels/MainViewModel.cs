@@ -2,6 +2,7 @@
 using SlightLibs.WPF.Command;
 using SlightLibs.WPF.Services;
 using SlightLibs.WPF.ViewModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace SlightLibs.WPF.Tests.ViewModels
@@ -12,7 +13,7 @@ namespace SlightLibs.WPF.Tests.ViewModels
 
         public MainViewModel() : base("Main View Title")
         {
-            OpenWindow = new RelayCommand(() =>
+            OpenWindow = new RelayCommand<object>((object obj) =>
             {
                 ServiceProvider.Instance
                     .GetService<IWindowService>()
