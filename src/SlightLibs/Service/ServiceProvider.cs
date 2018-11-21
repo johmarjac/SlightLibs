@@ -21,7 +21,10 @@ namespace SlightLibs.Service
                 .SelectMany(x => x.GetTypes().Where(w => w.GetTypeInfo().GetCustomAttribute(typeof(InjectableServiceAttribute)) != null));
 
             foreach (var serviceClass in classes)
-                AddService(Activator.CreateInstance(serviceClass));
+            {
+                if(!serviceClass.IsAbstract)
+                    AddService(Activator.CreateInstance(serviceClass));
+            }
         }
 
         public void AddService<TService>(TService service)
@@ -29,11 +32,16 @@ namespace SlightLibs.Service
             _services.Add(service);
         }
 
-        public TService GetService<TService>()
+        public TService GetService<TService>(Func<TService, bool> predicate = null)
         {
+            if (predicate == null)
+                return _services
+                    .OfType<TService>()
+                    .FirstOrDefault();
+            
             return _services
                 .OfType<TService>()
-                .FirstOrDefault();
+                .FirstOrDefault(predicate);
         }
     }
 }
