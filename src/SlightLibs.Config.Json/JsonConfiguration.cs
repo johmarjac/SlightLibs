@@ -7,7 +7,7 @@ namespace SlightLibs.Config.Json
     public abstract class JsonConfiguration : ConfigurationProvider
     {
         [JsonIgnore]
-        protected string ConfigFile { get; set; } = "config.json";
+        protected string ConfigFile { get; } = "config.json";
 
         public sealed override void Load()
         {
