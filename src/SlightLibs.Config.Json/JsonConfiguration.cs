@@ -12,7 +12,7 @@ namespace SlightLibs.Config.Json
         public sealed override void Load()
         {
             if (!Path.IsPathRooted(ConfigFile))
-                ConfigFile = Path.DirectorySeparatorChar + ConfigFile;
+                ConfigFile = $".{Path.DirectorySeparatorChar + ConfigFile}";
 
             var dInfo = new DirectoryInfo(Path.GetDirectoryName(ConfigFile));
             if (!dInfo.Exists)
@@ -28,7 +28,7 @@ namespace SlightLibs.Config.Json
         public sealed override void Save()
         {
             if (!Path.IsPathRooted(ConfigFile))
-                ConfigFile = Path.DirectorySeparatorChar + ConfigFile;
+                ConfigFile = $".{Path.DirectorySeparatorChar + ConfigFile}";
 
             var dInfo = new DirectoryInfo(Path.GetDirectoryName(ConfigFile));
             if (!dInfo.Exists)
