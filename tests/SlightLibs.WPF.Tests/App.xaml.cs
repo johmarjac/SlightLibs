@@ -22,5 +22,14 @@ namespace SlightLibs.WPF.Tests
                     .GetService<IWindowService>()
                     .Create<MainViewModel>();
         }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+
+            ServiceProvider.Instance
+                .GetService<JsonConfiguration>()?
+                .Save();
+        }
     }
 }
