@@ -1,4 +1,5 @@
-﻿using SlightLibs.Service;
+﻿using SlightLibs.Config.Json;
+using SlightLibs.Service;
 using SlightLibs.WPF.Services;
 using SlightLibs.WPF.Tests.ViewModels;
 using System.Windows;
@@ -14,8 +15,21 @@ namespace SlightLibs.WPF.Tests
             ServiceProvider.Instance.InjectServices();
 
             ServiceProvider.Instance
+                .GetService<JsonConfiguration>()?
+                .Load();
+
+            ServiceProvider.Instance
                     .GetService<IWindowService>()
                     .Create<MainViewModel>();
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+
+            ServiceProvider.Instance
+                .GetService<JsonConfiguration>()?
+                .Save();
         }
     }
 }
