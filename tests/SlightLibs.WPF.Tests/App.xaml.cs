@@ -1,4 +1,5 @@
-﻿using SlightLibs.Service;
+﻿using SlightLibs.Config.Json;
+using SlightLibs.Service;
 using SlightLibs.WPF.Services;
 using SlightLibs.WPF.Tests.ViewModels;
 using System.Windows;
@@ -12,6 +13,10 @@ namespace SlightLibs.WPF.Tests
             base.OnStartup(e);
 
             ServiceProvider.Instance.InjectServices();
+
+            ServiceProvider.Instance
+                .GetService<JsonConfiguration>()?
+                .Load();
 
             ServiceProvider.Instance
                     .GetService<IWindowService>()
